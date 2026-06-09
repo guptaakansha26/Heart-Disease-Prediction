@@ -1,0 +1,200 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>User Account</title>
+</head>
+<style>
+    .add-keyword-panel {
+        margin-top: 150px;
+	}
+</style>
+<body background="static/doctor-563429_1920.jpg">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<div class="container">
+	</br>
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#"></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+		  <li class="nav-item {%if active== 'new_test'%} active{%endif%}"> 
+			<a class="nav-link" href="?opt=new_test">New test</span></a>
+		  </li>
+		  <li class="nav-item {%if active== 'records'%} active{%endif%}"> 
+			<a class="nav-link" href="?opt=records">Records</span></a> 
+		  </li>
+		 
+		  <li class="nav-item">
+			<a class="nav-link text-danger" href="/logout">Log-Out</a>
+		  </li>
+		</ul>
+	  </div>
+	</nav>
+</div>
+	
+	{%if active== 'new_test'%}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4">
+			</div>
+			<div class="col-md-4">
+				<div class="login-panel panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Predict</h3>
+					</div>
+					<p>{{message}}</p>
+					<div class="panel-body">
+						<form role="form" method="post" action="/predict">
+							<fieldset>
+								<div class="form-group">
+									<label>Age</label>
+									<input class="form-control" placeholder="age" name="age" type="number" autofocus required>
+								</div>
+								<div class="form-group">
+									<label>Gender</label>
+									<select name="gender" class="form-control">
+										<option value="Male">Male</option>
+										<option value="Female">Female</option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label>Chest pain type</label>
+									<select name="chest_pain_type" class="form-control">
+										<option value="ATA">ATA</option>
+										<option value="NAP">NAP</option>
+										<option value="ASY">ASY</option>
+										<option value="TA">TA</option>
+									</select>
+								</div>
+								
+								<div class="form-group">
+									<label>Resting bp</label>
+									<input class="form-control" placeholder="Resting bp" name="resting_bp" type="number" required>
+								</div>
+
+								<div class="form-group">
+									<label>Cholesterol</label>
+									<input class="form-control" placeholder="Cholesterol" name="cholesterol" type="number" required>
+								</div>
+
+								<div class="form-group">
+									<label>Fasting bs</label>
+									<input class="form-control" placeholder="fasting bs" name="fasting_bs" type="number" required>
+								</div>
+
+								<div class="form-group">
+									<label>Resting ecg</label>
+									<select name="resting_ecg" class="form-control">
+										<option value="Normal">Normal</option>
+										<option value="ST">ST</option>
+										<option value="LVH">LVH</option>
+									</select>
+								</div>
+								
+								<div class="form-group">
+									<label>MaxHR</label>
+									<input class="form-control" placeholder="MaxHR" name="maxhr" type="number" required>
+								</div>
+								
+								<div class="form-group">
+									<label>Exercise Angina</label>
+									<select name="exercise_angina" class="form-control">
+										<option value="Yes">Yes</option>
+										<option value="No">No</option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label>Oldpeak</label>
+									<input class="form-control" placeholder="Oldpeak" name="oldpeak" type="number" step="any" required>
+								</div>
+
+								<div class="form-group">
+									<label>ST Slope</label>
+									<select name="st_slope" class="form-control">
+										<option value="Up">Up</option>
+										<option value="Flat">Flat</option>
+										<option value="Down">Down</option>
+									</select>
+								</div>
+
+				
+								<input class="btn btn-md btn-success btn-block" type="submit" name="predict" value="Predict">
+							</fieldset>
+						</form>
+					</div>
+					<br><br><br><br><br>
+				</div>
+			</div>
+		</div>
+	</div>
+	{%endif%}
+	
+	
+	
+
+	
+	{%if active== 'records'%}
+	<div class="container-fluid">
+	<div class="table-scrol bg-light">
+		 <h1 align="center">Chances of heart disease: {{ratio}} %</h1>
+		   <!-- <div class="table-responsive">-->
+			<table class="table table-bordered table-hover table-striped" >
+				<thead>
+				<tr>
+					<th>Test id</th>
+					<th>age</th>
+					<th>gender</th>
+					<th>chest_pain_type</th>
+					<th>resting_bp</th>
+					<th>cholesterol</th>
+					<th>fasting_bs</th>
+					<th>resting_ecg</th>
+					<th>max_hr</th>
+					<th>exercise_angina</th>
+					<th>oldpeak</th>
+					<th>st_slope</th>
+					<th>result</th>
+				</tr>
+				</thead>
+				
+				{%for record in records%} 
+				<tr>
+					<td align="center">{{record.id}}</td>
+					<td align="center">{{record.age}}</td>
+					<td align="center">{{record.gender}}</td>
+					<td align="center">{{record.chest_pain_type}}</td>
+					<td align="center">{{record.resting_bp}}</td>
+					<td align="center">{{record.cholesterol}}</td>
+					<td align="center">{{record.fasting_bs}}</td>
+					<td align="center">{{record.resting_ecg}}</td>
+					<td align="center">{{record.max_hr}}</td>
+					<td align="center">{{record.exercise_angina}}</td>
+					<td align="center">{{record.oldpeak}}</td>
+					<td align="center">{{record.st_slope}}</td>
+					<td align="center">{% if record.result == 1 %} Positive {%else %} Negative {%endif%}</td>
+				</tr>
+
+				{%endfor%} 
+			</table>
+	</div>
+</div>
+	{%endif%}
+	
+	
+	
+
+
+
+
+</body>
+
+</html>
